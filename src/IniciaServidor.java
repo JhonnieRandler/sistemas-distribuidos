@@ -7,7 +7,7 @@ public class IniciaServidor
         try
         {
             System.out.println("Iniciando servidor...");
-            Naming.rebind("ServidorBD_1", new ServidorBD());
+            Naming.rebind("Filmes", new ServidorFilmes());
         }
         catch (Exception e)
         {

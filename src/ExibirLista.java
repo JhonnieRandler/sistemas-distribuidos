@@ -14,8 +14,8 @@ public class ExibirLista extends JFrame{
     String [] colunas;
 
 
-    public ExibirLista(Object [][] dados, String [] colunas) {
-        super ("Contatos");
+    public ExibirLista(String titulo, Object [][] dados, String [] colunas) {
+        super (titulo);
         this.dados = dados;
         this.colunas = colunas;
     }
@@ -29,9 +29,9 @@ public class ExibirLista extends JFrame{
         painelFundo.add(barraRolagem);
 
         getContentPane().add(painelFundo);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500, 300);
+        setSize(1000, 500);
         setVisible(true);
     }
 }

@@ -1,13 +1,13 @@
 import java.rmi.*;
 import java.util.Vector;
 
-public class ListaSmartphones
+public class ListaFilmes
 {
-    public ListaSmartphones()
+    public ListaFilmes()
     {
         try
         {
-            bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
+            bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/Filmes");
         }
         catch (Exception e)
         {
@@ -20,24 +20,23 @@ public class ListaSmartphones
     {
         try
         {
-            Vector smartphones = bd.lista();
-            System.out.println("Smartphones Existentes na Base de Dados: "+smartphones.size());
+            Vector filmes = bd.lista();
+            System.out.println("Filmes Existentes na Base de Dados: " + filmes.size());
             String [] colunas = {
-                    "id", "Marca", "Modelo", "Memória", "Cor"
+                    "id", "Nome", "Duração", "Ano de Lançamento", "id do Diretor"
             };
-            String [][] dados = new String[smartphones.size()][5];
-            for (int j=0; j < smartphones.size(); j++)
+            String [][] dados = new String[filmes.size()][5];
+            for (int j=0; j < filmes.size(); j++)
             {
-                Smartphone c = (Smartphone) smartphones.get(j);
+                Filme c = (Filme) filmes.get(j);
                 dados[j][0] = Integer.toString(c.ID());
-                dados[j][1] = c.getMarca();
-                dados[j][2] = c.getModelo();
-                dados[j][3] = c.getMemoria();
-                dados[j][4] = c.getCor();
-
-                ExibirLista lc = new ExibirLista(dados, colunas);
-                lc.criaJanela();
+                dados[j][1] = c.getNome();
+                dados[j][2] = c.getDuracao();
+                dados[j][3] = c.getAnoLancamento();
+                dados[j][4] = Integer.toString(c.getDiretorId());
             }
+            ExibirLista lc = new ExibirLista("Lista de Filmes", dados, colunas);
+            lc.criaJanela();
         }
         catch (Exception e)
         {
@@ -48,7 +47,7 @@ public class ListaSmartphones
 
     public static void main (String[] argv)
     {
-        ListaSmartphones l = new ListaSmartphones();
+        ListaFilmes l = new ListaFilmes();
         l.lista();
     }
 
