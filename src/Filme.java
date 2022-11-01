@@ -29,8 +29,8 @@ public class Filme implements java.io.Serializable
         return "["+mID+"]\t"+nome+"\t"+duracao+"\t"+anoLancamento+"\t"+diretorId;
     }
 
-    private static int gID=0;
-    private int mID=0;
+    private static int gID=1;
+    private int mID=1;
 
     public String getNome() {
         return nome;

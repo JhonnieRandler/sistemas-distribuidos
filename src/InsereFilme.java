@@ -5,7 +5,6 @@ public class InsereFilme
 {
     public InsereFilme()
     {
-        System.out.println("Iniciando o Cliente...");
         try
         {
             bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/Filmes");
@@ -23,10 +22,10 @@ public class InsereFilme
         {
             String nome, duracao, anoLancamento;
             int diretorId;
-            nome = JOptionPane.showInputDialog("Digite o nome do Filme");
-            duracao = JOptionPane.showInputDialog("Digite a duração do Filme");
-            anoLancamento = JOptionPane.showInputDialog("Digite o ano de lançamento do Filme");
-            diretorId = Integer.parseInt(JOptionPane.showInputDialog("Digite o id do diretor do Filme"));
+            nome = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
+            duracao = JOptionPane.showInputDialog(null, "Digite a duração do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
+            anoLancamento = JOptionPane.showInputDialog(null, "Digite o ano de lançamento do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
+            diretorId = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o id do diretor do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE));
             int id=bd.insere(nome, duracao, anoLancamento, diretorId);
             System.out.println("Inserido novo Filme com ID: "+id);
         }
