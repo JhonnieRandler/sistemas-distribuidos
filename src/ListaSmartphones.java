@@ -5,8 +5,6 @@ public class ListaSmartphones
 {
     public ListaSmartphones()
     {
-        System.out.println("Iniciando o Cliente...");
-        // Vamos tentar ir aceder ao Servidor de Registos para recolher a interface
         try
         {
             bd = (InterfaceServidorBD) Naming.lookup("rmi://127.0.0.1/ServidorBD_1");
@@ -24,10 +22,21 @@ public class ListaSmartphones
         {
             Vector smartphones = bd.lista();
             System.out.println("Smartphones Existentes na Base de Dados: "+smartphones.size());
+            String [] colunas = {
+                    "id", "Marca", "Modelo", "Memória", "Cor"
+            };
+            String [][] dados = new String[smartphones.size()][5];
             for (int j=0; j < smartphones.size(); j++)
             {
                 Smartphone c = (Smartphone) smartphones.get(j);
-                System.out.println(c.desc());
+                dados[j][0] = Integer.toString(c.ID());
+                dados[j][1] = c.getMarca();
+                dados[j][2] = c.getModelo();
+                dados[j][3] = c.getMemoria();
+                dados[j][4] = c.getCor();
+
+                ExibirLista lc = new ExibirLista(dados, colunas);
+                lc.criaJanela();
             }
         }
         catch (Exception e)

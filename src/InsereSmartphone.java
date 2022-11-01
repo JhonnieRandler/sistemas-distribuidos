@@ -39,11 +39,6 @@ public class InsereSmartphone
 
     public static void main (String[] argv)
     {
-        if (argv.length!=4)
-        {
-            System.out.println("Sintaxe:\n\tjava InsereSmartphone \"marca\" \"modelo\" \"memoria\" \"cor\"");
-            System.exit(0);
-        }
         InsereSmartphone i = new InsereSmartphone();
         i.insere(argv);
     }

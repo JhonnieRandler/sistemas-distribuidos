@@ -31,6 +31,23 @@ public class Smartphone implements java.io.Serializable
 
     private static int gID=0;
     private int mID=0;
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getMemoria() {
+        return memoria;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
     private String marca;
     private String modelo;
     private String memoria;
