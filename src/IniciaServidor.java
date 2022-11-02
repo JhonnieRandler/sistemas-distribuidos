@@ -4,6 +4,7 @@ public class IniciaServidor
 {
     public static void main(String argv[])
     {
+        System.setProperty("java.rmi.server.hostname", "127.0.0.1");
         try
         {
             System.out.println("Iniciando servidor...");
