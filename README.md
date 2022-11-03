@@ -2,7 +2,7 @@
 
 Ao fazer alteração em qualquer arquivo, deve-se compilar novamente os arquivos .java:
 ```
-javac Servidor.java
+javac *.java
 ```
 
 Os arquivos de servidor devem ser compilados com rmic para gerar os arquivos stub:
@@ -21,13 +21,10 @@ rmiregistry &
 
 Depois deve-se iniciar o servidor, por exemplo:
 ```
-java IniciaServidor
+java ServidorFilmes
 ```
 
 Em outro terminal, inicie os arquivos clientes, por exemplo:
 ```
 java GerenciarFilmes
-```
-```
-java ListaFilmes
 ```
