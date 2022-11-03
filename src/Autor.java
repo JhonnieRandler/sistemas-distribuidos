@@ -23,7 +23,7 @@ public class Autor implements java.io.Serializable
 
     @Override
     public String toString() {
-        return id+":\t"+nome;
+        return nome;
     }
 
     public int getId() { return id; }

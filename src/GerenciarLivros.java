@@ -17,16 +17,43 @@ public class GerenciarLivros
             System.exit(0);
         }
     }
+
+    public Autor insereAutor () {
+        try {
+            for (int i = 0; i == 0; ) {
+                IServidor autores = (IServidor) Naming.lookup("rmi://127.0.0.1/Autores");
+                Vector vetorAutores = autores.lista();
+                vetorAutores.add("Adicionar Autor");
+                Object[] listaAutores = vetorAutores.toArray();
+
+                int autor = JOptionPane.showOptionDialog(null, "Escolha o autor", "Selecionar Autor", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, listaAutores, listaAutores[0]);
+                if (autor == listaAutores.length - 1) {
+                    String nomeAutor = JOptionPane.showInputDialog(null, "Digite o nome do Autor", "Inserir Autor", JOptionPane.INFORMATION_MESSAGE);
+                    int id = autores.insere(new Object[]{nomeAutor});
+                    System.out.println("Autor inserido com sucesso!");
+                } else {
+                    i++;
+                    return (Autor) autores.seleciona(autor + 1);
+                }
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao tentar se comunicar com Autor: " +e);
+            System.exit(0);
+        }
+
+        return (Autor) null;
+    }
     public void insere ()
     {
         try
         {
-            String nome, autor, anoLancamento;
+            Object nome, autor, anoLancamento;
 
             nome = JOptionPane.showInputDialog(null, "Digite o nome do Livro", "Inserir Livro", JOptionPane.INFORMATION_MESSAGE);
-            autor = JOptionPane.showInputDialog(null, "Digite o nome do Autor do Livro", "Inserir Livro", JOptionPane.INFORMATION_MESSAGE);
+            autor = insereAutor();
             anoLancamento = JOptionPane.showInputDialog(null, "Digite o ano de lançamento do Livro", "Inserir Livro", JOptionPane.INFORMATION_MESSAGE);
-            int id = bd.insere(new String[]{nome, autor, anoLancamento});
+            int id = bd.insere(new Object[]{nome, autor, anoLancamento});
             System.out.println("Livro " + nome + " inserido com sucesso!");
         }
         catch (Exception e)

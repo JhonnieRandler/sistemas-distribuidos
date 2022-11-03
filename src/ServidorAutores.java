@@ -54,7 +54,7 @@ public class ServidorAutores extends UnicastRemoteObject implements IServidor
         try
         {
             System.out.println("Iniciando servidor...");
-            Naming.rebind("Autores", new ServidorLivros());
+            Naming.rebind("Autores", new ServidorAutores());
         }
         catch (Exception e)
         {
