@@ -12,9 +12,9 @@ public class ServidorFilmes extends UnicastRemoteObject implements IServidor
         filmes = new Vector();
     }
 
-    public int insere(String nome, String duracao, String anoLancamento, int diretorId) throws RemoteException
+    public int insere(String [] dados) throws RemoteException
     {
-        Filme c = new Filme(nome, duracao, anoLancamento, diretorId);
+        Filme c = new Filme(dados[0], dados[1], dados[2], Integer.parseInt(dados[3]));
         filmes.add(c);
         System.out.println("Filme " + c.getNome() + " inserido com sucesso!");
         return c.getId();
@@ -40,8 +40,8 @@ public class ServidorFilmes extends UnicastRemoteObject implements IServidor
             Filme t = (Filme) filmes.get(j);
             if (t.temID(id))
             {
-                filmes.remove(j);
-                System.out.println("Filme " + t.getNome() + " deletado com sucesso!");
+                Filme deletado = (Filme) filmes.remove(j);
+                System.out.println("Filme " + deletado.getNome() + " deletado com sucesso!");
                 return 1;
             }
         }

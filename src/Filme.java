@@ -22,9 +22,9 @@ public class Filme implements java.io.Serializable
         return id;
     }
 
-    public boolean temID(int id)
+    public boolean temID(int idRecebido)
     {
-        return (id==id);
+        return (id==idRecebido);
     }
 
     @Override

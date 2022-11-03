@@ -21,13 +21,13 @@ public class GerenciarFilmes
     {
         try
         {
-            String nome, duracao, anoLancamento;
-            int diretorId;
+            String nome, duracao, anoLancamento, diretorId;
+
             nome = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
             duracao = JOptionPane.showInputDialog(null, "Digite a duração do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
             anoLancamento = JOptionPane.showInputDialog(null, "Digite o ano de lançamento do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
-            diretorId = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o id do diretor do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE));
-            int id=bd.insere(nome, duracao, anoLancamento, diretorId);
+            diretorId = JOptionPane.showInputDialog(null, "Digite o id do diretor do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
+            int id = bd.insere(new String[]{nome, duracao, anoLancamento, diretorId});
             System.out.println("Filme " + nome + " inserido com sucesso!");
         }
         catch (Exception e)
