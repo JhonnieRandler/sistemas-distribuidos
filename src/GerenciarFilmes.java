@@ -26,8 +26,7 @@ public class GerenciarFilmes
             nome = JOptionPane.showInputDialog(null, "Digite o nome do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
             duracao = JOptionPane.showInputDialog(null, "Digite a duração do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
             anoLancamento = JOptionPane.showInputDialog(null, "Digite o ano de lançamento do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
-            diretorId = JOptionPane.showInputDialog(null, "Digite o id do diretor do Filme", "Inserir Filme", JOptionPane.INFORMATION_MESSAGE);
-            int id = bd.insere(new String[]{nome, duracao, anoLancamento, diretorId});
+            int id = bd.insere(new String[]{nome, duracao, anoLancamento});
             System.out.println("Filme " + nome + " inserido com sucesso!");
         }
         catch (Exception e)
@@ -48,7 +47,7 @@ public class GerenciarFilmes
                 System.out.println("Há " + filmes.size() + " filmes na base de dados!");
             }
             String [] colunas = {
-                    "id", "Nome", "Duração", "Ano de Lançamento", "id do Diretor"
+                    "id", "Nome", "Duração", "Ano de Lançamento"
             };
             String [][] dados = new String[filmes.size()][5];
             for (int j=0; j < filmes.size(); j++)
@@ -58,7 +57,6 @@ public class GerenciarFilmes
                 dados[j][1] = c.getNome();
                 dados[j][2] = c.getDuracao();
                 dados[j][3] = c.getAnoLancamento();
-                dados[j][4] = Integer.toString(c.getDiretorId());
             }
             ExibirLista lc = new ExibirLista("Lista de Filmes", dados, colunas);
             lc.criaJanela();

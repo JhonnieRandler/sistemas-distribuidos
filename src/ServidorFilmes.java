@@ -14,7 +14,7 @@ public class ServidorFilmes extends UnicastRemoteObject implements IServidor
 
     public int insere(String [] dados) throws RemoteException
     {
-        Filme c = new Filme(dados[0], dados[1], dados[2], Integer.parseInt(dados[3]));
+        Filme c = new Filme(dados[0], dados[1], dados[2]);
         filmes.add(c);
         System.out.println("Filme " + c.getNome() + " inserido com sucesso!");
         return c.getId();

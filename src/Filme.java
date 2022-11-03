@@ -3,16 +3,14 @@ public class Filme implements java.io.Serializable
     private String nome;
     private String duracao;
     private String anoLancamento;
-    private int diretorId;
     private static int idGlobal = 1;
     private int id = 1;
 
-    public Filme(String nome, String duracao, String anoLancamento, int diretorId)
+    public Filme(String nome, String duracao, String anoLancamento)
     {
         this.nome = nome;
         this.duracao = duracao;
         this.anoLancamento = anoLancamento;
-        this.diretorId = diretorId;
         gerarID();
     }
 
@@ -29,7 +27,7 @@ public class Filme implements java.io.Serializable
 
     @Override
     public String toString() {
-        return id+":\t"+nome+"\t"+duracao+"\t"+anoLancamento+"\t"+diretorId;
+        return id+":\t"+nome+"\t"+duracao+"\t"+anoLancamento;
     }
 
     public int getId() { return id; }
@@ -44,9 +42,5 @@ public class Filme implements java.io.Serializable
 
     public String getAnoLancamento() {
         return anoLancamento;
-    }
-
-    public int getDiretorId() {
-        return diretorId;
     }
 }
