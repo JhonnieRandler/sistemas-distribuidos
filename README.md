@@ -26,7 +26,7 @@ java IniciaServidor
 
 Em outro terminal, inicie os arquivos clientes, por exemplo:
 ```
-java InsereFilme
+java GerenciarFilmes
 ```
 ```
 java ListaFilmes

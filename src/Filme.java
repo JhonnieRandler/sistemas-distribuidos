@@ -1,36 +1,38 @@
 public class Filme implements java.io.Serializable
 {
+    private String nome;
+    private String duracao;
+    private String anoLancamento;
+    private int diretorId;
+    private static int idGlobal = 1;
+    private int id = 1;
+
     public Filme(String nome, String duracao, String anoLancamento, int diretorId)
     {
-        this.nome=nome;
-        this.duracao=duracao;
-        this.anoLancamento=anoLancamento;
-        this.diretorId=diretorId;
-        filmeID();
+        this.nome = nome;
+        this.duracao = duracao;
+        this.anoLancamento = anoLancamento;
+        this.diretorId = diretorId;
+        gerarID();
     }
 
-    private synchronized int filmeID()
+    private synchronized int gerarID()
     {
-        mID=gID++;
-        return mID;
+        id = idGlobal++;
+        return id;
     }
 
     public boolean temID(int id)
     {
-        return (mID==id);
+        return (id==id);
     }
 
-    public int ID()
-    {
-        return mID;
-    }
-    public String desc()
-    {
-        return "["+mID+"]\t"+nome+"\t"+duracao+"\t"+anoLancamento+"\t"+diretorId;
+    @Override
+    public String toString() {
+        return id+":\t"+nome+"\t"+duracao+"\t"+anoLancamento+"\t"+diretorId;
     }
 
-    private static int gID=1;
-    private int mID=1;
+    public int getId() { return id; }
 
     public String getNome() {
         return nome;
@@ -47,9 +49,4 @@ public class Filme implements java.io.Serializable
     public int getDiretorId() {
         return diretorId;
     }
-
-    private String nome;
-    private String duracao;
-    private String anoLancamento;
-    private int diretorId;
 }
