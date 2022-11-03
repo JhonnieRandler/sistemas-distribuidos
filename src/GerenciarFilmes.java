@@ -72,7 +72,7 @@ public class GerenciarFilmes
     {
         try
         {
-            Filme deletado = bd.seleciona(id);
+            Filme deletado = (Filme) bd.seleciona(id);
             bd.apaga(id);
             String texto = "Filme " + deletado.getNome() + " deletado com sucesso";
             System.out.println(texto);

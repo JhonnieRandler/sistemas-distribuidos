@@ -12,9 +12,9 @@ public class ServidorFilmes extends UnicastRemoteObject implements IServidor
         filmes = new Vector();
     }
 
-    public int insere(String [] dados) throws RemoteException
+    public int insere(Object [] dados) throws RemoteException
     {
-        Filme c = new Filme(dados[0], dados[1], dados[2]);
+        Filme c = new Filme(dados[0].toString(), dados[1].toString(), dados[2].toString());
         filmes.add(c);
         System.out.println("Filme " + c.getNome() + " inserido com sucesso!");
         return c.getId();
